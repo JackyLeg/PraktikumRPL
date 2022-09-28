@@ -1,0 +1,43 @@
+/*I Made Novandy Asardi - 064002100030
+Praktikum RPL
+Bershasil dicoba di IntelliJ IDE*\
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Diskriminan {
+    //layout window beserta isinya
+    private JTextField tfA;
+    private JTextField tfB;
+    private JTextField tfC;
+    private JButton diskriminanButton;
+    private JLabel labelB;
+    private JLabel labelC;
+    private JLabel labelA;
+    private JLabel labelD;
+    private JPanel diskriminanPanel;
+
+    public Diskriminan() {
+        diskriminanButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int nilaiA, nilaiB, nilaiC, nilaiD;
+                nilaiA = Integer.parseInt(tfA.getText());
+                nilaiB = Integer.parseInt(tfB.getText());
+                nilaiC = Integer.parseInt(tfC.getText());
+                nilaiD = nilaiB * nilaiB - (4 * nilaiA * nilaiC); //menghitung diskriminan
+
+                labelD.setText(String.valueOf(nilaiD));
+            }
+        });
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("I Made Novandy Asardi - 064002100030");
+        frame.setContentPane(new Diskriminan().diskriminanPanel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
+}
