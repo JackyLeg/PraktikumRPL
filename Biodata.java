@@ -1,17 +1,16 @@
-//package praktikum.java.netbeans;
-import java.awt.event.*;
-import java.io.*;
+package prak7rpl;
+
 import javax.swing.*;
 
 public class Biodata extends javax.swing.JFrame {
 
     public Biodata() {
         initComponents();
-        this.setTitle("File Processing");
+        this.setTitle("Koneksi Database - I Made Novandy Asardi");
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
         nama = new javax.swing.JLabel();
@@ -100,31 +99,24 @@ public class Biodata extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>                        
+    }// </editor-fold>
 
-    private void tfNamaActionPerformed(java.awt.event.ActionEvent evt) {                                       
+    private void tfNamaActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                      
+    }
 
-    private void tfHobiActionPerformed(java.awt.event.ActionEvent evt) {                                       
+    private void tfHobiActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                      
+    }
 
-    private void showActionPerformed(java.awt.event.ActionEvent evt) {                                     
+    private void showActionPerformed(java.awt.event.ActionEvent evt) {
         JOptionPane.showMessageDialog(null, "Hore! Datamu berhasil masuk!", "Success", 1);
-        try(FileWriter fw = new FileWriter("input.txt", true);
-            BufferedWriter bw = new BufferedWriter(fw);
-            PrintWriter out = new PrintWriter(bw))
-        {
-            out.println("Nama: " + tfNama.getText() +
-                    "\nNIM: " + tfNim.getText() + 
-                    "\nHobi: " + tfHobi.getText());
-        }
-        catch (IOException e) {
-            System.out.println("Terjadi kesalahan.");
-            e.printStackTrace();
-        }
-    }                                    
+        String txt1 = tfNama.getText();
+        String txt2 = tfNim.getText();
+        String txt3 = tfHobi.getText();
+        prak7rpl.connect.getKoneksi(txt1, txt2, txt3);
+
+    }
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -134,7 +126,7 @@ public class Biodata extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify
     private javax.swing.JLabel hobi;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel nama;
@@ -143,5 +135,5 @@ public class Biodata extends javax.swing.JFrame {
     private javax.swing.JTextField tfHobi;
     private javax.swing.JTextField tfNama;
     private javax.swing.JTextField tfNim;
-    // End of variables declaration                   
+    // End of variables declaration
 }
