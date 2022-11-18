@@ -1,6 +1,5 @@
-package prak7rpl;
+package prakRPL;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class Biodata extends javax.swing.JFrame {
@@ -109,7 +108,7 @@ public class Biodata extends javax.swing.JFrame {
 
     private void hapusButtonActionPerformed(ActionEvent evt) {
         String hobi = tfHobi.getText();
-        prak7rpl.connect.hapusData(hobi);
+        prakRPL.connect.hapusData(hobi);
     }
 
     private void tfNamaActionPerformed(java.awt.event.ActionEvent evt) {
