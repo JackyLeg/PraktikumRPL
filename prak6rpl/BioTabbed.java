@@ -15,6 +15,12 @@ public class BioTabbed {
     JScrollPane sp;
 
     BioTabbed(){
+        //Frame
+        frameKu = new JFrame("Biodata - I Made Novandy Asardi");
+        frameKu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frameKu.setSize(350,300);
+        //frameKu.setLayout(new FlowLayout(FlowLayout.LEFT, 10,10));
+
         //Scrollbar
         sp = new JScrollPane(panelList, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
@@ -22,13 +28,14 @@ public class BioTabbed {
         panelBiodata = new JPanel();
         panelBiodata.setLayout(new FlowLayout(FlowLayout.LEFT, 10,10));
         panelList = new JPanel();
+        panelList.setLayout(new FlowLayout(FlowLayout.CENTER, 10,10));
         panelList.add(sp);
         frameKu.add(panelBiodata);
         frameKu.add(panelList);
 
         //Contents
         d1 = new Dimension(300,25);
-        d2 = new Dimension(150,25);
+        //d2 = new Dimension(150,25);
 
         labelNama = new JLabel("Nama : ");
         tfNama = new JTextField();
@@ -49,7 +56,7 @@ public class BioTabbed {
         panelBiodata.add(tfHobi);
 
         inputButton = new JButton("Input Data");
-        inputButton.setPreferredSize(d2);
+        inputButton.setPreferredSize(d1);
         inputButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -62,12 +69,9 @@ public class BioTabbed {
                 JOptionPane.showMessageDialog(panelBiodata, "Data berhasil dimasukkan ke dalam tabel!");
             }
         });
+        //panelList.add(tabelBiodata); //error disini
+        panelBiodata.add(inputButton);
 
-        //Frame
-        frameKu = new JFrame("Biodata - I Made Novandy Asardi");
-        frameKu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frameKu.setSize(350,300);
-        frameKu.setLayout(new FlowLayout(FlowLayout.LEFT, 10,10));
 
         //TabbedPane
         tp = new JTabbedPane(JTabbedPane.TOP);
@@ -76,7 +80,6 @@ public class BioTabbed {
         frameKu.add(tp);
 
         frameKu.setVisible(true);
-        
     }
 
     public static void main (String [] args){
