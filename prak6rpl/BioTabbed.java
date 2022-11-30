@@ -9,7 +9,7 @@ public class BioTabbed {
     JLabel labelNama, labelNIM, labelHobi;
     JTextField tfNama, tfNIM, tfHobi;
     JButton inputButton;
-    Dimension d1, d2;
+    Dimension d1;
     JTable tabelBiodata;
     JTabbedPane tp;
     JScrollPane sp;
@@ -19,23 +19,17 @@ public class BioTabbed {
         frameKu = new JFrame("Biodata - I Made Novandy Asardi");
         frameKu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frameKu.setSize(350,300);
-        //frameKu.setLayout(new FlowLayout(FlowLayout.LEFT, 10,10));
-
-        //Scrollbar
-        sp = new JScrollPane(panelList, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
         //Panel
         panelBiodata = new JPanel();
         panelBiodata.setLayout(new FlowLayout(FlowLayout.LEFT, 10,10));
         panelList = new JPanel();
         panelList.setLayout(new FlowLayout(FlowLayout.CENTER, 10,10));
-        panelList.add(sp);
         frameKu.add(panelBiodata);
         frameKu.add(panelList);
 
         //Contents
         d1 = new Dimension(300,25);
-        //d2 = new Dimension(150,25);
 
         labelNama = new JLabel("Nama : ");
         tfNama = new JTextField();
@@ -65,13 +59,13 @@ public class BioTabbed {
                         {tfNama.getText(), tfNIM.getText(), tfHobi.getText()}
                 };
                 tabelBiodata = new JTable(data, atribut);
+                sp = new JScrollPane(tabelBiodata);
+                panelList.add(sp);
 
                 JOptionPane.showMessageDialog(panelBiodata, "Data berhasil dimasukkan ke dalam tabel!");
             }
         });
-        //panelList.add(tabelBiodata); //error disini
         panelBiodata.add(inputButton);
-
 
         //TabbedPane
         tp = new JTabbedPane(JTabbedPane.TOP);
