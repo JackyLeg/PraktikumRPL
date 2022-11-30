@@ -45,24 +45,18 @@ public class FileProcessingBiodata {
         FPFrame.add(inputButton);
         inputButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent evt) {
                 try {
-                    File fileSaya = new File("D:\\prak5rpl\\Biodata.txt");
-                    if (fileSaya.createNewFile()) {
-                        JOptionPane.showMessageDialog(FPFrame, "File " + fileSaya.getName() + " berhasil dibuat!");
-                    } else {
-                        JOptionPane.showMessageDialog(FPFrame, "File " + fileSaya.getName() + " sudah ada.", "Alert", JOptionPane.WARNING_MESSAGE);
-                    }
-                } catch (IOException e) {
-                    JOptionPane.showMessageDialog(FPFrame, "Terjadi kesalahan", "Alert", JOptionPane.WARNING_MESSAGE);
                     FileWriter wFile = new FileWriter("Biodata.txt");
                     wFile.write("Nama: " + tfNama.getText() +
-                            "\nNIM: " + tfHobi.getText() +
+                            "\nNIM: " + tfNIM.getText() +
                             "\nHobi: " + tfHobi.getText());
                     wFile.close();
                     JOptionPane.showMessageDialog(FPFrame, "Data berhasil diinput!");
+                } catch (IOException e) {
+                    System.out.println("Terjadi Kesalahan");
+                    e.printStackTrace();
                 }
-
             }
         });
         deleteButton = new JButton("Delete File");
@@ -73,7 +67,12 @@ public class FileProcessingBiodata {
             public void actionPerformed(ActionEvent e) {
                 int opsi = JOptionPane.showConfirmDialog(FPFrame,"Apakah kamu yakin?");
                 if (opsi == JOptionPane.YES_OPTION) {
-                    JOptionPane.showMessageDialog(FPFrame,"File berhasil dihapus!");
+                    File dFile = new File("Biodata.txt");
+                    if (dFile.delete()) {
+                        JOptionPane.showMessageDialog(FPFrame,"File " + dFile.getName() + " berhasil dihapus!", "Sukses!", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(FPFrame,"Gagal menghapus file!", "Gagal", JOptionPane.WARNING_MESSAGE);
+                    }
                 }
             }
         });
